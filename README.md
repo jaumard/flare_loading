@@ -21,6 +21,8 @@ FlareLoading(
 
 `isLoading`: alternative to `until` if you want to manage loading state with a boolean
 
+`loopAnimation`: animation name to run in loop 
+
 `endAnimation`: animation name to run once `until` is complete or `isLoading` false
 
 `startAnimation`: animation name to run once as start
