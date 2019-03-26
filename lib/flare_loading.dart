@@ -86,7 +86,7 @@ class _FlareLoadingState extends State<FlareLoading> implements FlareController 
       setState(() {
         _isLoading = false;
       });
-      if(_loading == null && _complete == null || _isCompleted) {
+      if(_loading == null && _complete == null && _isIntroFinished || _isCompleted) {
         _finished();
       }
     }
@@ -111,6 +111,7 @@ class _FlareLoadingState extends State<FlareLoading> implements FlareController 
         //start animation finished
         _isIntroFinished = true;
         if(_loading == null && _complete == null) {
+          _finished();
           return false; // if there another animation to continue to return false
         }
       }
