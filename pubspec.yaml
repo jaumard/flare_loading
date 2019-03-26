@@ -1,6 +1,6 @@
 name: flare_loading
 description: Loading widget based on a Flare animation, allow you to create beautiful custom loading widgets or dialogs
-version: 1.0.0
+version: 1.0.0+1
 author: jaumard <jimmy.aumard@gmail.com>
 homepage: https://github.com/jaumard/flare_loading
 
