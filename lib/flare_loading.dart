@@ -36,6 +36,9 @@ class FlareLoading extends StatefulWidget {
 }
 
 class _FlareLoadingState extends State<FlareLoading> implements FlareController {
+  @override
+  ValueNotifier<bool> isActive = ValueNotifier<bool>(true);
+
   ActorAnimation _start, _loading, _complete;
   double _animationTime = 0.0;
   bool _isLoading = true;//bool to know if we're still processing
@@ -157,4 +160,5 @@ class _FlareLoadingState extends State<FlareLoading> implements FlareController 
   void setViewTransform(viewTransform) {
     //nothing to do
   }
+
 }
