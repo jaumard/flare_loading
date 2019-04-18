@@ -35,10 +35,7 @@ class FlareLoading extends StatefulWidget {
   _FlareLoadingState createState() => _FlareLoadingState();
 }
 
-class _FlareLoadingState extends State<FlareLoading> implements FlareController {
-  @override
-  ValueNotifier<bool> isActive = ValueNotifier<bool>(true);
-
+class _FlareLoadingState extends State<FlareLoading> with FlareController {
   ActorAnimation _start, _loading, _complete;
   double _animationTime = 0.0;
   bool _isLoading = true;//bool to know if we're still processing
