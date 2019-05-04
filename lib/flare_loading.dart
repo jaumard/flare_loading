@@ -111,6 +111,7 @@ class _FlareLoadingState extends State<FlareLoading> with FlareController {
         //start animation finished
         _isIntroFinished = true;
         if(_loading == null && _complete == null) {
+          _isLoading = false;
           _finished();
           return false; // if there another animation to continue to return false
         }
@@ -133,6 +134,7 @@ class _FlareLoadingState extends State<FlareLoading> with FlareController {
       if (completeTime >= _complete.duration) {
         // Notify we're done and stop advancing.
         _isCompleted = true;
+        _isLoading = false;
         _finished();
         return false;
       }

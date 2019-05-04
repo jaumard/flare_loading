@@ -1,3 +1,7 @@
+## [1.0.0+5] - 04/06/2019.
+
+* fix startAnimation doesn't trigger callback.
+
 ## [1.0.0+4] - 18/04/2019.
 
 * fix flare controller.
