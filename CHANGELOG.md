@@ -1,4 +1,8 @@
-## [1.0.0+5] - 04/06/2019.
+## [2.0.0] - 31/05/2019.
+
+* remove onFinished callback to replace it by onSuccess and onError 
+
+## [1.0.0+5] - 06/04/2019.
 
 * fix startAnimation doesn't trigger callback.
 

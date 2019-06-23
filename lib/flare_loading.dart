@@ -7,11 +7,12 @@ import 'package:flutter/material.dart';
 
 class FlareLoading extends StatefulWidget {
   final String name;
-  final VoidCallback onFinished;
+  final Function(dynamic data) onSuccess;
+  final Function(dynamic error, dynamic stacktrace) onError;
   final double width;
   final double height;
   final Alignment alignment;
-  final Future<void> Function() until;
+  final Future Function() until;
   final String loopAnimation;
   final String endAnimation;
   final String startAnimation;
@@ -20,7 +21,8 @@ class FlareLoading extends StatefulWidget {
   const FlareLoading({
     Key key,
     @required this.name,
-    @required this.onFinished,
+    @required this.onSuccess,
+    @required this.onError,
     this.width,
     this.height,
     this.alignment = Alignment.center,
@@ -38,9 +40,13 @@ class FlareLoading extends StatefulWidget {
 class _FlareLoadingState extends State<FlareLoading> with FlareController {
   ActorAnimation _start, _loading, _complete;
   double _animationTime = 0.0;
-  bool _isLoading = true;//bool to know if we're still processing
-  bool _isCompleted = false;//bool to know if endAnimation is finished
-  bool _isIntroFinished = false;//bool to know if startAnimation is finished
+  dynamic _data; //save data from the future for the callback
+  dynamic _error; //save error from the future for the callback
+  dynamic _stack; //save stack from the future for the callback
+  bool _isLoading = true; //bool to know if we're still processing
+  bool _isSuccessful = false; //bool to know if the until future is successful
+  bool _isCompleted = false; //bool to know if endAnimation is finished
+  bool _isIntroFinished = false; //bool to know if startAnimation is finished
 
   @override
   void initState() {
@@ -51,10 +57,10 @@ class _FlareLoadingState extends State<FlareLoading> with FlareController {
 
   @override
   void didUpdateWidget(FlareLoading oldWidget) {
-    if(widget.isLoading != null && widget.isLoading != oldWidget.isLoading) {
+    if (widget.isLoading != null && widget.isLoading != oldWidget.isLoading) {
       setState(() {
         _isLoading = widget.isLoading;
-        if(_isLoading) {
+        if (_isLoading) {
           _isCompleted = false;
         }
       });
@@ -82,19 +88,30 @@ class _FlareLoadingState extends State<FlareLoading> with FlareController {
 
   Future _processCallback() async {
     if (widget.until != null) {
-      await widget.until();
+      try {
+        _data = await widget.until();
+        _isSuccessful = true;
+      } catch (err, stack) {
+        _error = err;
+        _stack = stack;
+        _isSuccessful = false;
+      }
       setState(() {
         _isLoading = false;
       });
-      if(_loading == null && _complete == null && _isIntroFinished || _isCompleted) {
+      if (_loading == null && _complete == null && _isIntroFinished || _isCompleted) {
         _finished();
       }
     }
   }
 
   _finished() {
-    if(!_isLoading) {
-      widget.onFinished();
+    if (!_isLoading) {
+      if (_isSuccessful) {
+        widget.onSuccess(_data);
+      } else {
+        widget.onError(_error, _stack);
+      }
     }
   }
 
@@ -102,7 +119,7 @@ class _FlareLoadingState extends State<FlareLoading> with FlareController {
   bool advance(FlutterActorArtboard artboard, double elapsed) {
     _animationTime += elapsed;
 
-    if(!_isIntroFinished && _start != null) {
+    if (!_isIntroFinished && _start != null) {
       if (_animationTime < _start.duration) {
         // finish start animation
         _start.apply(_animationTime, artboard, 1.0);
@@ -110,7 +127,7 @@ class _FlareLoadingState extends State<FlareLoading> with FlareController {
       } else {
         //start animation finished
         _isIntroFinished = true;
-        if(_loading == null && _complete == null) {
+        if (_loading == null && _complete == null) {
           _isLoading = false;
           _finished();
           return false; // if there another animation to continue to return false
@@ -159,5 +176,4 @@ class _FlareLoadingState extends State<FlareLoading> with FlareController {
   void setViewTransform(viewTransform) {
     //nothing to do
   }
-
 }

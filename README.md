@@ -33,7 +33,9 @@ FlareLoading(
 
 `alignment`: alignment of the flare animation, center by default
 
-`onFinished` callback called when the animation is finished and `isLoading` is false or `until` is complete
+`onSuccess` callback called when the animation is finished and `isLoading` is false or `until` is complete
+
+`onError` callback called `until` has failed
 
 ## Available mode
 

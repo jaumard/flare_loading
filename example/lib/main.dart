@@ -47,8 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 200,
             height: 200,
             until: () => Future.delayed(Duration(seconds: 5)),
-            onFinished: () {
+            onSuccess: (_) {
               print('Finished');
+            },
+            onError: (err, stack) {
+              print(err);
             },
           ),
           Expanded(
@@ -60,17 +63,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     loopAnimation: 'Loading',
                     endAnimation: 'Complete',
                     isLoading: _isLoading,
-                    onFinished: () {
+                    onSuccess: (_) {
                       print('Finished');
+                    },
+                    onError: (err, stack) {
+                      print(err);
                     },
                   ),
                 ),
                 RaisedButton(
                   child: Text('Toogle loading'),
-                  onPressed: () => setState(() {
-                        _isLoading = !_isLoading;
-                      }),
-                )
+                  onPressed: () => setState(
+                        () {
+                          _isLoading = !_isLoading;
+                        },
+                      ),
+                ),
               ],
             ),
           ),
