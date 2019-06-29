@@ -1,3 +1,7 @@
+## [2.0.1] - 29/06/2019.
+
+* fix callbacks when only loop animation set
+
 ## [2.0.0] - 31/05/2019.
 
 * remove onFinished callback to replace it by onSuccess and onError 

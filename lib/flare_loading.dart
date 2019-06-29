@@ -143,6 +143,8 @@ class _FlareLoadingState extends State<FlareLoading> with FlareController {
       // Complete, but need to finish loading animation...
       _loading.apply(_animationTime, artboard, 1.0);
     } else if (_complete == null) {
+      _isLoading = false;
+      _finished();
       return false;
     } else if (!_isCompleted) {
       // Chain completion animation
