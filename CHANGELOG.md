@@ -1,3 +1,7 @@
+## [2.0.2] - 09/07/2019.
+
+* upgrade flare deps to be compatible with last flutter stable
+
 ## [2.0.1] - 29/06/2019.
 
 * fix callbacks when only loop animation set
