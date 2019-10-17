@@ -87,7 +87,9 @@ class _FlareLoadingState extends State<FlareLoading> with FlareController {
   }
 
   Future _processCallback() async {
-    if (widget.until != null) {
+    if (widget.until == null) {
+      _isSuccessful = true;//based on boolean field we're always sucessful
+    } else {
       try {
         _data = await widget.until();
         _isSuccessful = true;

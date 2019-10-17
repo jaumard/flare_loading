@@ -1,3 +1,8 @@
+## [2.0.3] - 17/10/2019.
+
+* fix callback not called when using boolean flag instead of callback
+* upgrade flare deps 
+
 ## [2.0.2] - 09/07/2019.
 
 * upgrade flare deps to be compatible with last flutter stable
