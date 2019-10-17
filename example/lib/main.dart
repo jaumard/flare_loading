@@ -46,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
             endAnimation: 'Complete',
             width: 200,
             height: 200,
+            fit: BoxFit.fill,
             until: () => Future.delayed(Duration(seconds: 5)),
             onSuccess: (_) {
               print('Finished');

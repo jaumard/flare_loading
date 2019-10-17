@@ -1,3 +1,7 @@
+## [2.1.0] - 17/10/2019.
+
+* add boxFit field
+
 ## [2.0.3] - 17/10/2019.
 
 * fix callback not called when using boolean flag instead of callback

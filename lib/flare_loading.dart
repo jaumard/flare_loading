@@ -9,6 +9,7 @@ class FlareLoading extends StatefulWidget {
   final String name;
   final Function(dynamic data) onSuccess;
   final Function(dynamic error, dynamic stacktrace) onError;
+  final BoxFit fit;
   final double width;
   final double height;
   final Alignment alignment;
@@ -23,6 +24,7 @@ class FlareLoading extends StatefulWidget {
     @required this.name,
     @required this.onSuccess,
     @required this.onError,
+    this.fit = BoxFit.contain,
     this.width,
     this.height,
     this.alignment = Alignment.center,
@@ -79,6 +81,7 @@ class _FlareLoadingState extends State<FlareLoading> with FlareController {
           child: FlareActor(
             widget.name,
             controller: this,
+            fit: widget.fit,
             callback: (_) => print('finished'),
           ),
         ),
