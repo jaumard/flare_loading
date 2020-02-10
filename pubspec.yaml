@@ -1,6 +1,6 @@
 name: flare_loading
 description: Loading widget based on a custom Flare animation, allow you to create beautiful custom loading widgets or dialogs
-version: 2.1.0
+version: 2.1.1
 author: jaumard <jimmy.aumard@gmail.com>
 homepage: https://github.com/jaumard/flare_loading
 
@@ -9,7 +9,7 @@ environment:
   flutter: ">=1.7.8 <2.0.0"
 
 dependencies:
-  flare_flutter: ^1.6.2
+  flare_flutter: ^2.0.1
   flutter:
     sdk: flutter
 

@@ -1,3 +1,7 @@
+## [2.1.1] - 10/02/2020.
+
+* update rive dep
+
 ## [2.1.0] - 17/10/2019.
 
 * add boxFit field
