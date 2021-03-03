@@ -4,6 +4,8 @@
 
 Loading widget based on a Flare animation, allow you to create custom loading widgets or dialogs
 
+If you're using Rive instead of Flare please use [rive_loading](https://pub.dartlang.org/packages/rive_loading)
+
 ## Usage
 
 ```dart
