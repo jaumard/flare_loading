@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool _isLoading = true;
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           FlareLoading(
             name: 'loading.flr',
-            //loopAnimation: 'Loading',
+            loopAnimation: 'Loading',
             startAnimation: 'Loading',
             endAnimation: 'Complete',
             width: 200,
@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   child: Text('Toogle loading'),
                   onPressed: () => setState(
                     () {

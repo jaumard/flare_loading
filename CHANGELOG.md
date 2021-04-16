@@ -1,3 +1,7 @@
+## [3.0.0] - 16/04/2021.
+
+* null safety migration
+
 ## [2.1.2] - 03/03/2021.
 
 * update readme
